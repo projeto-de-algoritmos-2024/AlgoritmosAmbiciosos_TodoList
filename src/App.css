@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, Geneva, Tahoma, sans-serif;
+}
+
+:root {
+  --primary-color: blue;
+  --dark-color: black;
+  --light-color: white;
+
+  font-size: 62, 5%; /* 1 rem = 10px */
+}
+
+body {
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.todo-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 50%;
+  margin: 8rem auto;
+
+  background: var(--light-color);
+  text-align: center;
+  border-radius: 1rem;
+
+  padding-left: 3.2rem;
+  padding-right: 3.2rem;
+  padding-bottom: 3.2rem;
+
+  box-shadow: 0px 188px 53px 0px rgba(0, 0, 0, 0),
+    0px 120px 48px 0px rgba(0, 0, 0, 0.01),
+    0px 68px 41px 0px rgba(0, 0, 0, 0.05), 0px 30px 30px 0px rgba(0, 0, 0, 0.09),
+    0px 8px 17px 0px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin: 3.2rem 0;
+  color: var(--dark-color);
+  font-size: 2rem;
+}
+
+.complete {
+  text-decoration: line-through;
+  opacity: 0.4;
+  color: var(--dark-color);
+}
+
+.container-todo-form {
+  display: flex;
+  width: 100%;
+  margin-bottom: 3.2rem;
+}
+
+.todo-form {
+  width: 100%;
+}
+
+.todo-input {
+  padding: 1.4rem 3.2rem 1.4rem 1.6rem;
+  border-radius: 0.4rem 0 0 0.4rem;
+  border: 0.2rem solid var(--primary-color);
+  width: 75%;
+  outline: none;
+  background: transparent;
+  font-size: 1rem;
+  color: var(--dark-color);
+}
+
+.todo-input::placeholder {
+  color: var(--dark-color);
+}
+
+.todo-button {
+  padding: 1.6rem;
+  width: 25%;
+  border: none;
+  border-radius: 0 0.4rem 0.4rem 0;
+  cursor: pointer;
+  outline: none;
+  background-color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--light-color);
+  text-transform: capitalize;
+}
+
+.todo-input.edit {
+  padding: 1.4rem 3.2rem 1.4rem 1.6rem;
+  border: 0.2rem solid #dbdbdb;
+}
+
+.todo-button.edit {
+  background-color: #dbdbdb;
+  color: var(--dark-color);
+  font-weight: bold;
+  border-radius: 0rem 0.4rem 0.4rem 0rem;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.todo-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--dark-color);
+  background-color: #f2f2f2;
+
+  padding: 1.6rem;
+  margin-bottom: 1.6rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.delete-icon {
+  margin-right: 0.5rem;
+  color: var(--primary-color);
+}
+
+.edit-icon {
+  color: var(--primary-color);
+}
