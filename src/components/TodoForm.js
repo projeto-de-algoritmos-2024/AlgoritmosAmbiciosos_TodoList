@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 const TodoForm = (props) => {
   const [input, setInput] = useState(props.edit ? props.edit.value : "");
@@ -8,7 +6,7 @@ const TodoForm = (props) => {
     props.edit ? props.edit.duration : ""
   );
   const [deadline, setDeadline] = useState(
-    props.edit ? new Date(props.edit.deadline) : new Date()
+    props.edit ? props.edit.deadline : ""
   );
 
   const inputRef = useRef(null);
@@ -22,9 +20,9 @@ const TodoForm = (props) => {
     if (name === "text") {
       setInput(value);
     } else if (name === "duration") {
-      if (/^\d*$/.test(value)) {
-        setDuration(value);
-      }
+      setDuration(value);
+    } else if (name === "deadline") {
+      setDeadline(value);
     }
   };
 
@@ -35,16 +33,12 @@ const TodoForm = (props) => {
       id: Math.floor(Math.random() * 10000),
       text: input,
       duration: duration,
-      deadline: deadline.toISOString().split("T")[0], // Formata a data como 'yyyy-mm-dd'
+      deadline: deadline, // Armazenar o deadline como número de horas
     });
 
     setInput("");
     setDuration("");
-    setDeadline(new Date());
-  };
-
-  const handleSort = () => {
-    props.onSort();
+    setDeadline("");
   };
 
   return (
@@ -63,22 +57,23 @@ const TodoForm = (props) => {
             />
             <div className="todo-input-containerDuration">
               <input
-                type="text"
+                type="number"
                 placeholder="Atualize a duração da tarefa em horas"
                 value={duration}
                 name="duration"
                 className="todo-input edit"
                 onChange={handleChange}
               />
-              <DatePicker
-                selected={deadline}
-                onChange={(date) => setDeadline(date)}
-                dateFormat="yyyy-MM-dd"
-                minDate={new Date()}
+              <input
+                type="number"
+                placeholder="Atualize o deadline da tarefa em horas"
+                value={deadline}
+                name="deadline"
                 className="todo-input edit"
+                onChange={handleChange}
               />
             </div>
-            <button className="todo-button edit">Adicionar</button>
+            <button className="todo-button edit">Atualizar</button>
           </div>
         ) : (
           <div className="todo-input-containerAll">
@@ -93,29 +88,28 @@ const TodoForm = (props) => {
             />
             <div className="todo-input-containerDuration">
               <input
-                type="text"
+                type="number"
                 placeholder="Insira a duração da tarefa em horas"
                 value={duration}
                 name="duration"
                 className="todo-input"
                 onChange={handleChange}
               />
-              <DatePicker
-                selected={deadline}
-                onChange={(date) => setDeadline(date)}
-                dateFormat="yyyy-MM-dd"
-                minDate={new Date()}
+              <input
+                type="number"
+                placeholder="Insira o deadline da tarefa em horas"
+                value={deadline}
+                name="deadline"
                 className="todo-input"
+                onChange={handleChange}
               />
             </div>
             <div className="container-buttons">
-              <button type="submit" className="todo-button">
-                Adicionar
-              </button>
+              <button className="todo-button">Adicionar</button>
               <button
                 type="button"
                 className="todo-button"
-                onClick={handleSort}
+                onClick={props.onSort}
               >
                 Ordenar tarefas
               </button>

@@ -19,6 +19,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
       value: "",
       duration: "",
       deadline: "",
+      atraso: "",
     });
   };
 
@@ -32,7 +33,8 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
       key={index}
     >
       <div key={todo.id}>
-        <b>{index + 1}</b> {todo.text} - {todo.duration} horas - {todo.deadline}
+        <b>{index + 1}</b> {todo.text} - {todo.duration} horas - {todo.deadline}{" "}
+        - {todo.atraso}
       </div>
 
       {!todo.isComplete && (
@@ -45,6 +47,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
                 value: todo.text,
                 duration: todo.duration,
                 deadline: todo.deadline,
+                atraso: todo.atraso,
               })
             }
             className="icon"
