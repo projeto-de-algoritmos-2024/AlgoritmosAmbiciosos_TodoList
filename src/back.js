@@ -1,16 +1,16 @@
 function minAtraso(tarefas) {
-    tarefas.sort((a, b) => a.duracao - b.prazo);
+  tarefas.sort((a, b) => a.duration - b.deadline);
 
-    let tempoAtual = 0;
-    let maxAtraso = 0;
+  let tempoAtual = 0;
+  let maxAtraso = 0;
 
-    tarefas.forEach(tarefa => {
-        tempoAtual += tarefa.duracao;
-        tarefa.atraso = Math.max(0, tempoAtual-tarefa.prazo);
-        maxAtraso = Math.max(maxAtraso,tarefa.atraso);
-    });
+  tarefas.forEach((tarefa) => {
+    tempoAtual += tarefa.duration;
+    tarefa.atraso = Math.max(0, tempoAtual - tarefa.deadline);
+    maxAtraso = Math.max(maxAtraso, tarefa.atraso);
+  });
 
-    return [tarefas,maxAtraso];
+  return [tarefas, maxAtraso];
 }
 
 export { minAtraso };
