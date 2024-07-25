@@ -3,6 +3,7 @@ import Todo from "./Todo";
 import TodoForm from "./TodoForm";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { MdKeyboardArrowUp } from "react-icons/md";
+import { minAtraso } from "../back";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -43,7 +44,8 @@ const TodoList = () => {
   };
 
   const sortTodos = () => {
-    console.log("Ordenar tarefas", todos);
+    const [sortedTodos] = minAtraso(todos);
+    setTodos([...sortedTodos]); // Atualiza o estado com a lista ordenada
   };
 
   const toggleShowCompleted = () => {
