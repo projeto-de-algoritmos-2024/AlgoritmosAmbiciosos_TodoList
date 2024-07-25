@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import TodoForm from "./TodoForm";
-import { MdDelete } from "react-icons/md";
-import { MdEdit } from "react-icons/md";
 import { MdCheck } from "react-icons/md";
+import '../App.css'
 
 const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
   const [edit, setEdit] = useState({
@@ -32,27 +31,16 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
       className={todo.isComplete ? "todo-row complete" : "todo-row"}
       key={index}
     >
-      <div key={todo.id}>
-        <b>{index + 1}</b> {todo.text} - {todo.duration} horas - {todo.deadline}{" "}
-        - {todo.atraso}
+      <div key={todo.id} className="text-todo">
+        <b>{todo.text}</b> 
+        <p>deadline: {todo.deadline} horas</p>
+        <p>duração: {todo.duration} horas</p>
+        <p>atraso: {todo.atraso} horas</p>
       </div>
 
       {!todo.isComplete && (
         <div className="icons">
           <MdCheck onClick={() => completeTodo(todo.id)} className="icon" />
-          <MdEdit
-            onClick={() =>
-              setEdit({
-                id: todo.id,
-                value: todo.text,
-                duration: todo.duration,
-                deadline: todo.deadline,
-                atraso: todo.atraso,
-              })
-            }
-            className="icon"
-          />
-          <MdDelete onClick={() => removeTodo(todo.id)} className="icon" />
         </div>
       )}
     </div>

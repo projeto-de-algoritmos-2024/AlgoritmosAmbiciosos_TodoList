@@ -34,8 +34,9 @@ const TodoForm = (props) => {
       text: input,
       duration: duration,
       deadline: deadline, // Armazenar o deadline como número de horas
+      atraso: 0
     });
-
+    
     setInput("");
     setDuration("");
     setDeadline("");
@@ -44,38 +45,6 @@ const TodoForm = (props) => {
   return (
     <div className="container-todo-form">
       <form className="todo-form" onSubmit={handleSubmit}>
-        {props.edit ? (
-          <div className="todo-input-containerAll">
-            <input
-              type="text"
-              placeholder="Atualize o nome da tarefa"
-              value={input}
-              name="text"
-              className="todo-input edit"
-              onChange={handleChange}
-              ref={inputRef}
-            />
-            <div className="todo-input-containerDuration">
-              <input
-                type="number"
-                placeholder="Atualize a duração da tarefa em horas"
-                value={duration}
-                name="duration"
-                className="todo-input edit"
-                onChange={handleChange}
-              />
-              <input
-                type="number"
-                placeholder="Atualize o deadline da tarefa em horas"
-                value={deadline}
-                name="deadline"
-                className="todo-input edit"
-                onChange={handleChange}
-              />
-            </div>
-            <button className="todo-button edit">Atualizar</button>
-          </div>
-        ) : (
           <div className="todo-input-containerAll">
             <input
               type="text"
@@ -115,7 +84,6 @@ const TodoForm = (props) => {
               </button>
             </div>
           </div>
-        )}
       </form>
     </div>
   );

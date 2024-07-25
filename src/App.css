@@ -183,3 +183,7 @@ h1 {
   width: 100%;
   text-align: start;
 }
+
+.text-todo {
+  text-align: left;
+}
