@@ -1,5 +1,5 @@
 function minAtraso(tarefas) {
-    tarefas.sort((a, b) => a.duracao - b.prazo);
+    tarefas.sort((a, b) => a.prazo - b.prazo);
 
     let tempoAtual = 0;
     let maxAtraso = 0;
