@@ -26,12 +26,23 @@ const TodoList = () => {
     setShowCompleted(!showCompleted);
   };
 
+  const completeTodo = (id) => {
+    let updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        todo.isComplete = !todo.isComplete;
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+  };
+
   return (
     <div className="todo-app">
       <h1>Quais são os planos pra hoje?</h1>
       <TodoForm onSubmit={addTodo} onSort={sortTodos} />
       <Todo
         todos={todos.filter((todo) => !todo.isComplete)}
+        completeTodo={completeTodo}
       />
       <button onClick={toggleShowCompleted} className="show-button">
         {showCompleted
@@ -47,6 +58,7 @@ const TodoList = () => {
         <div className="completed-todos">
           <Todo
             todos={todos.filter((todo) => todo.isComplete)}
+            completeTodo={() => {}} // Não faz nada, pois não queremos alterar tarefas completas
             className="completed-todo"
           />
         </div>
